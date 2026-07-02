@@ -16,8 +16,6 @@ University-Navigation/
 │   ├── utils.js        # 工具函数（分类、收藏、搜索、主题切换等）
 │   ├── render.js       # 渲染函数（sidebar、filters、cards、UI更新）
 │   └── handlers.js     # 事件绑定（导航切换、过滤器点击、搜索输入等）
-├── data/
-│   └── universities.json  # 高校数据备份（未使用）
 └── assets/             # 静态资源
 ```
 
