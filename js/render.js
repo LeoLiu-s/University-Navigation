@@ -77,7 +77,11 @@ function renderCards() {
         const matchType = typeFilter === 'all' || item.type === typeFilter;
         const matchCategory = categoryFilter === 'all' || getCategory(item.name) === categoryFilter;
         const matchSchoolType = schoolTypeFilter === 'all' || getSchoolType(item.name) === schoolTypeFilter;
-        const matchSearch = searchFilter === '' || item.name.toLowerCase().includes(searchFilter.toLowerCase());
+        const kw = searchFilter.toLowerCase();
+        const matchSearch = kw === '' ||
+            item.name.toLowerCase().includes(kw) ||
+            (item.py && item.py.includes(kw)) ||
+            (item.pyi && item.pyi.includes(kw));
         return matchCity && matchType && matchCategory && matchSchoolType && matchSearch;
     });
 
