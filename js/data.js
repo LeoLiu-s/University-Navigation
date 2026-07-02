@@ -11,7 +11,7 @@ const universityData = {
         { id: 9, name: "河南科技学院", url: "http://www.hist.edu.cn/", location: "新乡市", type: "本科" },
         { id: 10, name: "河南牧业经济学院", url: "http://www.hnuahe.edu.cn/", location: "郑州市", type: "本科" },
         { id: 11, name: "河南中医药大学", url: "http://www.hactcm.edu.cn/", location: "郑州市", type: "本科" },
-        { id: 12, name: "河南医药大学", url: "https://www.xxmu.edu.cn/", location: "新乡市", type: "本科" },
+        { id: 12, name: "新乡医学院", url: "https://www.xxmu.edu.cn/", location: "新乡市", type: "本科" },
         { id: 13, name: "河南大学", url: "http://www.henu.edu.cn/", location: "开封市", type: "本科" },
         { id: 14, name: "河南师范大学", url: "http://www.htu.edu.cn/", location: "新乡市", type: "本科" },
         { id: 15, name: "信阳师范大学", url: "http://www.xynu.edu.cn/", location: "信阳市", type: "本科" },
