@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>河南导航 - 高校 & 政府采购</title>
+    <meta name="description" content="河南高校官网导航、政府采购网导航，收录182所河南高等院校和19个政府采购网站。">
+    <meta property="og:title" content="河南导航 - 高校 & 政府采购">
+    <meta property="og:description" content="河南高校官网导航、政府采购网导航。">
+    <meta property="og:type" content="website">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <button class="menu-toggle" id="menuToggle">
+        <span></span><span></span><span></span>
+    </button>
+
+    <button class="back-to-top" id="backToTop" onclick="backToTop()">⬆️</button>
+
+    <nav class="top-nav">
+        <div class="nav-brand">
+            <span>🗺️</span>河南导航
+        </div>
+        <div class="nav-tabs">
+            <button class="nav-tab active" data-module="university">🎓 高校导航</button>
+            <button class="nav-tab gov" data-module="gov">📋 政府采购</button>
+        </div>
+        <div class="nav-stats" id="navStats">
+            <span>📚 182 所高校</span>
+            <span>📋 19 个政府采购网</span>
+        </div>
+        <button class="theme-toggle" onclick="toggleTheme()" title="切换主题">🌙</button>
+    </nav>
+
+    <button class="sidebar-toggle" id="sidebarToggle" title="折叠侧边栏">◀</button>
+
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <h3 id="sidebarTitle">按城市筛选</h3>
+        </div>
+        <div class="sidebar-list" id="sidebarList"></div>
+    </aside>
+
+    <div class="visit-counter">
+        <div class="counter-item">
+            <span class="counter-label">总访问</span>
+            <span class="counter-value" id="totalVisits">0</span>
+        </div>
+        <div class="counter-item">
+            <span class="counter-label">今日</span>
+            <span class="counter-value" id="todayVisits">0</span>
+        </div>
+    </div>
+
+    <main class="main-content" id="mainContent">
+        <div class="content-header">
+            <div class="content-title">
+                <h1 id="pageTitle">河南高校官网导航</h1>
+                <span class="subtitle" id="pageSubtitle">182 所高等院校</span>
+            </div>
+            <div class="search-box">
+                <input type="text" id="searchInput" placeholder="搜索网站...">
+            </div>
+            <div class="search-box internet-search">
+                <select class="search-engine-select" id="searchEngine">
+                    <option value="baidu">百度</option>
+                    <option value="bing">Bing</option>
+                    <option value="google">Google</option>
+                    <option value="sogou">搜狗</option>
+                </select>
+                <input type="text" id="internetSearch" placeholder="🔍 搜索互联网..." onkeydown="if(event.key==='Enter')doInternetSearch()">
+            </div>
+        </div>
+
+        <div class="gov-search-box" id="monitorSearchBox">
+            <input type="text" id="monitorKeyword" placeholder="🔔 输入关键词搜索高校动态，如：智慧教室、信息化建设..." onkeydown="if(event.key==='Enter')doMonitorSearch()">
+            <select id="monitorScope">
+                <option value="all">全部高校</option>
+                <option value="郑州市">郑州市</option>
+                <option value="洛阳市">洛阳市</option>
+                <option value="新乡市">新乡市</option>
+                <option value="南阳市">南阳市</option>
+                <option value="开封市">开封市</option>
+                <option value="其他">其他城市</option>
+            </select>
+            <button onclick="doMonitorSearch()">全网搜索</button>
+        </div>
+
+        <div class="gov-search-box" id="govSearchBox" style="display:none;">
+            <input type="text" id="govSearchInput" placeholder="🔍 在河南政府采购网搜索采购项目..." onkeydown="if(event.key==='Enter')doGovSearch()">
+            <select id="govSearchSite">
+                <option value="henan">河南省本级</option>
+                <option value="zhengzhou">郑州市</option>
+                <option value="kaifeng">开封市</option>
+                <option value="luoyang">洛阳市</option>
+                <option value="pingdingshan">平顶山市</option>
+                <option value="anyang">安阳市</option>
+                <option value="hebi">鹤壁市</option>
+                <option value="xinxiang">新乡市</option>
+                <option value="jiaozuo">焦作市</option>
+                <option value="puyang">濮阳市</option>
+                <option value="xuchang">许昌市</option>
+                <option value="luohe">漯河市</option>
+                <option value="sanmenxia">三门峡市</option>
+                <option value="nanyang">南阳市</option>
+                <option value="shangqiu">商丘市</option>
+                <option value="xinyang">信阳市</option>
+                <option value="zhoukou">周口市</option>
+                <option value="zhumadian">驻马店市</option>
+                <option value="jiyuan">济源市</option>
+            </select>
+            <button onclick="doGovSearch()">搜索</button>
+        </div>
+
+        <div class="filters" id="filters"></div>
+
+        <div class="card-grid" id="cardGrid"></div>
+    </main>
+
+    <script src="js/config.js"></script>
+    <script src="js/data.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/utils.js"></script>
+    <script src="js/render.js"></script>
+    <script src="js/handlers.js"></script>
+    <script>init();</script>
+</body>
+</html>
