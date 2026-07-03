@@ -110,10 +110,8 @@ function renderCards() {
         const faviconUrl = 'https://favicon.hlycc.com/' + domain + '.png';
         const schoolType = currentModule === 'university' ? getSchoolType(item.name) : '';
         const typeClassSchool = schoolType === '民办' ? 'private' : (schoolType === '中外合作' ? 'coop' : 'public');
-        const delay = Math.min(index * 0.03, 1);
-
         return `
-            <div class="card ${typeClass} ${currentModule === 'gov' ? 'gov' : ''}" style="animation-delay: ${delay}s" data-id="${item.id}" data-url="${escapeHtml(item.url)}">
+            <div class="card ${typeClass} ${currentModule === 'gov' ? 'gov' : ''} card-lazy" data-id="${item.id}" data-url="${escapeHtml(item.url)}">
                 <div class="card-header">
                     <span class="card-num">${num}</span>
                     <img class="card-favicon" src="${faviconUrl}" alt="${escapeHtml(item.name)}" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
@@ -135,6 +133,7 @@ function renderCards() {
             </div>
         `;
     }).join('');
+    observeCards();
 }
 
 function clearAllFilters() {
@@ -164,4 +163,18 @@ function updateUI() {
     renderSidebar();
     renderFilters();
     renderCards();
+}
+
+let _cardObserver = null;
+function observeCards() {
+    if (_cardObserver) _cardObserver.disconnect();
+    _cardObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('card-visible');
+                _cardObserver.unobserve(entry.target);
+            }
+        });
+    }, { rootMargin: '50px' });
+    document.querySelectorAll('.card-lazy').forEach(card => _cardObserver.observe(card));
 }

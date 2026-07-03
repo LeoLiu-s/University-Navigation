@@ -9,6 +9,11 @@
     --danger: #ef4444;
     --bg-dark: #0f172a;
     --bg-card: #1e293b;
+    --bg-nav: rgba(15, 23, 42, 0.9);
+    --bg-sidebar: rgba(15, 23, 42, 0.85);
+    --bg-input: rgba(30, 41, 59, 0.8);
+    --bg-card-hover: rgba(30, 41, 59, 0.95);
+    --bg-card-url: rgba(15, 23, 42, 0.5);
     --text-primary: #f8fafc;
     --text-secondary: #94a3b8;
     --border: rgba(148, 163, 184, 0.1);
@@ -19,6 +24,11 @@
 [data-theme="light"] {
     --bg-dark: #f0f4f8;
     --bg-card: #ffffff;
+    --bg-nav: #ffffff;
+    --bg-sidebar: #ffffff;
+    --bg-input: #f1f5f9;
+    --bg-card-hover: #f8fafc;
+    --bg-card-url: #f1f5f9;
     --text-primary: #1e293b;
     --text-secondary: #64748b;
     --border: rgba(0, 0, 0, 0.1);
@@ -58,7 +68,7 @@ body::before {
     left: 0;
     right: 0;
     height: 60px;
-    background: rgba(15, 23, 42, 0.9);
+    background: var(--bg-nav);
     backdrop-filter: blur(20px);
     border-bottom: 1px solid var(--border);
     display: flex;
@@ -138,7 +148,7 @@ body::before {
 
 .sidebar {
     width: 200px;
-    background: rgba(15, 23, 42, 0.85);
+    background: var(--bg-sidebar);
     backdrop-filter: blur(20px);
     height: calc(100vh - 60px);
     position: fixed;
@@ -316,7 +326,7 @@ body::before {
     padding: 12px 20px 12px 45px;
     border: 2px solid transparent;
     border-radius: 50px;
-    background: rgba(30, 41, 59, 0.8);
+    background: var(--bg-input);
     color: white;
     font-size: 14px;
     outline: none;
@@ -336,7 +346,7 @@ body::before {
     top: 60px;
     width: 20px;
     height: 40px;
-    background: rgba(15, 23, 42, 0.85);
+    background: var(--bg-sidebar);
     border: 1px solid var(--border);
     border-left: none;
     border-radius: 0 6px 6px 0;
@@ -382,7 +392,7 @@ body::before {
     font-size: 13px;
     font-weight: 500;
     transition: all 0.25s ease;
-    background: rgba(30, 41, 59, 0.8);
+    background: var(--bg-input);
     color: var(--text-secondary);
     border: 1px solid var(--border);
 }
@@ -406,15 +416,22 @@ body::before {
 }
 
 .card {
-    background: rgba(30, 41, 59, 0.7);
+    background: var(--bg-card);
     backdrop-filter: blur(10px);
     border-radius: var(--radius);
     padding: 14px;
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     border: 1px solid var(--border);
-    animation: fadeInUp 0.4s ease forwards;
-    opacity: 0;
     cursor: pointer;
+}
+
+.card-lazy {
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+.card-visible {
+    animation: fadeInUp 0.4s ease forwards;
 }
 
 @keyframes fadeInUp {
@@ -426,7 +443,7 @@ body::before {
     transform: translateY(-6px);
     box-shadow: var(--shadow-lg);
     border-color: rgba(99, 102, 241, 0.3);
-    background: rgba(30, 41, 59, 0.95);
+    background: var(--bg-card-hover);
 }
 
 .card.gov:hover {
@@ -551,7 +568,7 @@ body::before {
     color: var(--text-secondary);
     margin-bottom: 10px;
     word-break: break-all;
-    background: rgba(15, 23, 42, 0.5);
+    background: var(--bg-card-url);
     padding: 6px 8px;
     border-radius: 6px;
     max-height: 32px;
@@ -636,7 +653,7 @@ body::before {
     top: 12px;
     left: 12px;
     z-index: 1001;
-    background: rgba(30, 41, 59, 0.9);
+    background: var(--bg-input);
     border: 1px solid var(--border);
     padding: 10px 14px;
     border-radius: 10px;
@@ -721,7 +738,7 @@ body::before {
 }
 
 .theme-toggle {
-    background: rgba(30, 41, 59, 0.8);
+    background: var(--bg-input);
     border: 1px solid var(--border);
     padding: 8px 12px;
     border-radius: 20px;
@@ -743,7 +760,7 @@ body::before {
     left: 8px;
     top: 50%;
     transform: translateY(-50%);
-    background: rgba(30, 41, 59, 0.9);
+    background: var(--bg-input);
     border: 1px solid var(--border);
     color: white;
     padding: 4px 8px;
@@ -782,7 +799,7 @@ body::before {
     padding: 10px 15px;
     border: 2px solid transparent;
     border-radius: 8px;
-    background: rgba(30, 41, 59, 0.8);
+    background: var(--bg-input);
     color: white;
     font-size: 14px;
     outline: none;
@@ -796,7 +813,7 @@ body::before {
     padding: 10px 15px;
     border: none;
     border-radius: 8px;
-    background: rgba(30, 41, 59, 0.8);
+    background: var(--bg-input);
     color: white;
     font-size: 14px;
     cursor: pointer;
@@ -820,37 +837,16 @@ body::before {
 }
 
 .search-engine-select option {
-    background: #1e293b;
-}
-
-[data-theme="light"] .search-engine-select,
-[data-theme="light"] .search-box,
-[data-theme="light"] .card,
-[data-theme="light"] .sidebar,
-[data-theme="light"] .sidebar-toggle,
-[data-theme="light"] .top-nav,
-[data-theme="light"] .menu-toggle {
-    background: #fff !important;
-    color: #1e293b;
-    border-color: rgba(0,0,0,0.1);
-}
-
-[data-theme="light"] .card:hover {
-    background: #f8fafc !important;
+    background: var(--bg-card);
 }
 
 [data-theme="light"] .search-box input {
-    background: #f1f5f9;
     color: #1e293b;
     border-color: #e2e8f0;
 }
 
-[data-theme="light"] .card-url {
-    background: #f1f5f9;
-}
-
 [data-theme="light"] .sidebar-item:hover,
 [data-theme="light"] .sidebar-item.active {
-    background: linear-gradient(135deg, var(--primary), #8b5cf6) !important;
-    color: white !important;
+    background: linear-gradient(135deg, var(--primary), #8b5cf6);
+    color: white;
 }

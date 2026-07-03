@@ -20,7 +20,9 @@ function getCategory(name) {
 }
 
 function getSchoolType(name) {
-    if (name.includes('西亚斯')) return '中外合作';
+    const items = currentModule === 'university' ? universityData.items : [];
+    const item = items.find(i => i.name === name);
+    if (item && item.schoolType) return item.schoolType;
     if (privateSchools.includes(name)) return '民办';
     return '公办';
 }
