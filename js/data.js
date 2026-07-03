@@ -141,7 +141,7 @@
         { id: 139, name: "郑州卫生健康职业学院", py: "zhengzhouweishengjiankangzhiyexueyuan", pyi: "zzwsjkzyxy", url: "https://www.zzhvc.cn/", location: "郑州市", type: "专科" },
         { id: 140, name: "河南物流职业学院", py: "henanwuliuzyxy", pyi: "hnwlzyxy", url: "https://www.hnwlxy.edu.cn/", location: "新乡市", type: "专科" },
         { id: 141, name: "河南地矿职业学院", py: "henandikuangzhiyexueyuan", pyi: "hndkzyxy", url: "https://www.hagmc.edu.cn/", location: "郑州市", type: "专科" },
-        { id: 142, name: "郑州亚欧交通职业学院", py: "zhengzhouyaoujiaotongzhiyexueyuan", pyi: "zzyojtzyxy", url: "https://www.zzyaou.edu.cn/", location: "郑州市", type: "专科" },
+        { id: 142, name: "郑州亚欧交通职业学院", py: "zhengzhouyaoujiaotongzhiyexueyuan", pyi: "zzyojtzyxy", url: "https://www.zzyaou.edu.cn/", location: "郑州市", type: "专科", schoolType: "中外合作" },
         { id: 143, name: "河南女子职业学院", py: "henannvzizhiyexueyuan", pyi: "hnzzzyxy", url: "https://www.henz.edu.cn/", location: "新乡市", type: "专科" },
         { id: 144, name: "河南对外经济贸易职业学院", py: "henanduiwaijingjimaoyizhiyexueyuan", pyi: "hndwjjmyzyxy", url: "https://www.hnwmxy.edu.cn/", location: "开封市", type: "专科" },
         { id: 145, name: "濮阳石油化工职业技术学院", py: "puyangshihyouhuagongzhiyejishuxueyuan", pyi: "pyshyhghzyjsxy", url: "https://pypcc.edu.cn/", location: "濮阳市", type: "专科" },
