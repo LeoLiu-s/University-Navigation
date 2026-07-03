@@ -111,7 +111,7 @@ function renderCards() {
         const schoolType = currentModule === 'university' ? getSchoolType(item.name) : '';
         const typeClassSchool = schoolType === '民办' ? 'private' : (schoolType === '中外合作' ? 'coop' : 'public');
         return `
-            <div class="card ${typeClass} ${currentModule === 'gov' ? 'gov' : ''} card-lazy" data-id="${item.id}" data-url="${escapeHtml(item.url)}">
+            <div class="card ${typeClass} ${currentModule === 'gov' ? 'gov' : ''}" data-id="${item.id}" data-url="${escapeHtml(item.url)}">
                 <div class="card-header">
                     <span class="card-num">${num}</span>
                     <img class="card-favicon" src="${faviconUrl}" alt="${escapeHtml(item.name)}" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
