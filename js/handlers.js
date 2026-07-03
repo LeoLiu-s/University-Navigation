@@ -48,6 +48,25 @@ function initEvents() {
         }
     });
 
+    document.getElementById('cardGrid').addEventListener('click', (e) => {
+        const favBtn = e.target.closest('[data-fav-id]');
+        if (favBtn) {
+            e.stopPropagation();
+            toggleFavorite(parseInt(favBtn.dataset.favId));
+            return;
+        }
+        const visitLink = e.target.closest('[data-visit-id]');
+        if (visitLink) {
+            e.stopPropagation();
+            visitUrl(parseInt(visitLink.dataset.visitId), visitLink.dataset.visitUrl, e);
+            return;
+        }
+        const card = e.target.closest('.card[data-id]');
+        if (card) {
+            visitUrl(parseInt(card.dataset.id), card.dataset.url, e);
+        }
+    });
+
     let searchTimer;
     document.getElementById('searchInput').addEventListener('input', (e) => {
         searchFilter = e.target.value;

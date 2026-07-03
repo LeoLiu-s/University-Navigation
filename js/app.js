@@ -13,7 +13,7 @@ let favorites = new Set();
     if (savedTheme === 'light') {
         document.body.setAttribute('data-theme', 'light');
         const btn = document.querySelector('.theme-toggle');
-        if (btn) btn.textContent = '☀️';
+        if (btn) btn.textContent = '\u2600\uFE0F';
     }
 })();
 
@@ -31,12 +31,17 @@ document.addEventListener('keydown', function(e) {
     }
 });
 
-window.onscroll = function() {
-    const btn = document.getElementById('backToTop');
-    if (btn) {
-        btn.style.display = document.documentElement.scrollTop > 300 ? 'block' : 'none';
-    }
-};
+let scrollTimer = null;
+window.addEventListener('scroll', function() {
+    if (scrollTimer) return;
+    scrollTimer = setTimeout(function() {
+        const btn = document.getElementById('backToTop');
+        if (btn) {
+            btn.style.display = document.documentElement.scrollTop > 300 ? 'block' : 'none';
+        }
+        scrollTimer = null;
+    }, 100);
+});
 
 function init() {
     const savedStats = localStorage.getItem('visitStats');
