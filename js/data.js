@@ -158,7 +158,7 @@
         { id: 156, name: "郑州城建职业学院", py: "zhengzhouchengjianzhiyexueyuan", pyi: "zzcjzyxy", url: "https://www.zzucvc.edu.cn/", location: "郑州市", type: "专科" },
         { id: 157, name: "郑州医药健康职业学院", py: "zhengzhouyiyaojiankangzhiyexueyuan", pyi: "zzyyjkzyxy", url: "https://www.zzyyzy.edu.cn/", location: "郑州市", type: "专科" },
         { id: 158, name: "平顶山职业技术学院", py: "pingdingshanzhiyejishuxueyuan", pyi: "pdszyjsxy", url: "https://www.pdszy.edu.cn/", location: "平顶山市", type: "专科" },
-        { id: 159, name: "南阳工艺美术职业学院", py: "nanyanggongyimeishuzhiyexueyuan", pyi: "nygymszyxy", url: "https://www.nygymy.com/", location: "南阳市", type: "专科" },
+        { id: 159, name: "南阳工艺美术职业学院", py: "nanyanggongyimeishuzhiyexueyuan", pyi: "nygymszyxy", url: "https://www.nygymy.edu.cn/index.htm", location: "南阳市", type: "专科" },
         { id: 160, name: "濮阳科技职业学院", py: "puyangkejizhiyexueyuan", pyi: "pykjzyxy", url: "http://www.pykjzyxy.com/", location: "濮阳市", type: "专科" },
         { id: 161, name: "商丘幼儿师范高等专科学校", py: "shangqiuyouershifangaodengzhuankexuexiao", pyi: "sqyesfgzzkxx", url: "https://www.sqyz.edu.cn/", location: "商丘市", type: "专科" },
         { id: 162, name: "周口理工职业学院", py: "zhoukouligongzhiyexueyuan", pyi: "zklgzyxy", url: "http://www.zkpvc.edu.cn/", location: "周口市", type: "专科" },
