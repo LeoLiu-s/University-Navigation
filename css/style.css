@@ -850,3 +850,85 @@ body::before {
     background: linear-gradient(135deg, var(--primary), #8b5cf6);
     color: white;
 }
+
+/* ===== 可访问性 & Footer（优化新增） ===== */
+.visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+.skip-link {
+    position: absolute;
+    left: -9999px;
+    top: 0;
+    z-index: 2000;
+    background: var(--primary);
+    color: #fff;
+    padding: 10px 16px;
+    border-radius: 0 0 8px 0;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.skip-link:focus {
+    left: 0;
+}
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible {
+    outline: 2px solid var(--primary-light);
+    outline-offset: 2px;
+}
+
+.site-footer {
+    margin-top: 32px;
+    padding: 24px 0 8px;
+    border-top: 1px solid var(--border);
+}
+
+.footer-content {
+    max-width: 900px;
+    margin: 0 auto;
+    text-align: center;
+    color: var(--text-secondary);
+    font-size: 13px;
+    line-height: 1.7;
+}
+
+.footer-about strong {
+    color: var(--text-primary);
+    display: block;
+    margin-bottom: 6px;
+    font-size: 14px;
+}
+
+.footer-about p {
+    max-width: 640px;
+    margin: 0 auto 12px;
+}
+
+.footer-meta {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.footer-meta a {
+    color: var(--primary-light);
+    text-decoration: none;
+}
+
+.footer-meta a:hover {
+    text-decoration: underline;
+}

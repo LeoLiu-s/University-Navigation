@@ -114,7 +114,7 @@ function renderCards() {
             <div class="card ${typeClass} ${currentModule === 'gov' ? 'gov' : ''}" data-id="${item.id}" data-url="${escapeHtml(item.url)}">
                 <div class="card-header">
                     <span class="card-num">${num}</span>
-                    <img class="card-favicon" src="${faviconUrl}" alt="${escapeHtml(item.name)}" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+                    <img class="card-favicon" src="${faviconUrl}" alt="${escapeHtml(item.name)}" loading="lazy" decoding="async" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
                     <div class="card-logo" style="display:none">${logoChar}</div>
                     <div class="card-info">
                         <div class="card-title">${escapeHtml(item.name)}</div>
@@ -151,12 +151,21 @@ function clearAllFilters() {
 
 function updateUI() {
     const data = currentModule === 'university' ? universityData : govData;
-    document.getElementById('pageTitle').textContent = currentModule === 'university' ? '河南高校官网导航' : '河南省政府采购网导航';
+    const moduleTitle = currentModule === 'university' ? '河南高校官网导航' : '河南省政府采购网导航';
+    document.getElementById('pageTitle').textContent = moduleTitle;
     document.getElementById('pageSubtitle').textContent = currentModule === 'university'
         ? `${universityData.items.length} 所高等院校`
         : `${govData.items.length} 个政府采购网站`;
     document.getElementById('sidebarTitle').textContent = '按城市筛选';
     document.getElementById('searchInput').placeholder = '搜索网站...';
+
+    document.title = moduleTitle + ' - 河南导航';
+    const metaDesc = document.querySelector('meta[name="description"]');
+    if (metaDesc) {
+        metaDesc.setAttribute('content', currentModule === 'university'
+            ? `河南高校官网导航，收录${universityData.items.length}所河南高等院校，支持按城市、公办民办、本科专科筛选。`
+            : `河南省政府采购网导航，收录${govData.items.length}个政府采购网站，覆盖省本级及各地市。`);
+    }
 
     document.getElementById('govSearchBox').style.display = currentModule === 'gov' ? 'flex' : 'none';
     document.getElementById('monitorSearchBox').style.display = currentModule === 'university' ? 'flex' : 'none';

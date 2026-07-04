@@ -9,15 +9,34 @@
     <meta property="og:description" content="河南高校官网导航、政府采购网导航。">
     <meta property="og:type" content="website">
     <meta property="og:image" content="https://leoliu-s.github.io/University-Navigation/assets/og-image.png">
+    <meta property="og:url" content="https://leoliu-s.github.io/University-Navigation/">
+    <meta property="og:locale" content="zh_CN">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="theme-color" content="#0f172a">
+    <link rel="canonical" href="https://leoliu-s.github.io/University-Navigation/">
+    <link rel="manifest" href="site.webmanifest">
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🗺️</text></svg>">
+    <link rel="preconnect" href="https://favicon.hlycc.com" crossorigin>
     <link rel="stylesheet" href="css/style.css">
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "河南导航",
+        "alternateName": "河南高校 & 政府采购导航",
+        "url": "https://leoliu-s.github.io/University-Navigation/",
+        "description": "河南高校官网导航、政府采购网导航，收录182所河南高等院校和19个政府采购网站。",
+        "inLanguage": "zh-CN"
+    }
+    </script>
 </head>
 <body>
-    <button class="menu-toggle" id="menuToggle">
+    <a href="#mainContent" class="skip-link">跳转到主内容</a>
+    <button class="menu-toggle" id="menuToggle" aria-label="打开侧边栏菜单" aria-expanded="false">
         <span></span><span></span><span></span>
     </button>
 
-    <button class="back-to-top" id="backToTop" onclick="backToTop()">⬆️</button>
+    <button class="back-to-top" id="backToTop" onclick="backToTop()" aria-label="返回顶部">⬆️</button>
 
     <nav class="top-nav">
         <div class="nav-brand">
@@ -31,10 +50,10 @@
             <span>📚 182 所高校</span>
             <span>📋 19 个政府采购网</span>
         </div>
-        <button class="theme-toggle" onclick="toggleTheme()" title="切换主题">🌙</button>
+        <button class="theme-toggle" onclick="toggleTheme()" title="切换主题" aria-label="切换深色/浅色主题">🌙</button>
     </nav>
 
-    <button class="sidebar-toggle" id="sidebarToggle" title="折叠侧边栏">◀</button>
+    <button class="sidebar-toggle" id="sidebarToggle" title="折叠侧边栏" aria-label="折叠侧边栏">◀</button>
 
     <aside class="sidebar" id="sidebar">
         <div class="sidebar-header">
@@ -61,16 +80,19 @@
                 <span class="subtitle" id="pageSubtitle">182 所高等院校</span>
             </div>
             <div class="search-box">
-                <input type="text" id="searchInput" placeholder="搜索网站...">
+                <label for="searchInput" class="visually-hidden">在站内搜索高校或采购网站</label>
+                <input type="text" id="searchInput" placeholder="搜索网站..." aria-label="站内搜索">
             </div>
             <div class="search-box internet-search">
-                <select class="search-engine-select" id="searchEngine">
+                <label for="searchEngine" class="visually-hidden">选择搜索引擎</label>
+                <select class="search-engine-select" id="searchEngine" aria-label="选择搜索引擎">
                     <option value="baidu">百度</option>
                     <option value="bing">Bing</option>
                     <option value="google">Google</option>
                     <option value="sogou">搜狗</option>
                 </select>
-                <input type="text" id="internetSearch" placeholder="🔍 搜索互联网..." onkeydown="if(event.key==='Enter')doInternetSearch()">
+                <label for="internetSearch" class="visually-hidden">搜索互联网</label>
+                <input type="text" id="internetSearch" placeholder="🔍 搜索互联网..." aria-label="搜索互联网" onkeydown="if(event.key==='Enter')doInternetSearch()">
             </div>
         </div>
 
@@ -117,6 +139,22 @@
         <div class="filters" id="filters"></div>
 
         <div class="card-grid" id="cardGrid"></div>
+
+        <footer class="site-footer">
+            <div class="footer-content">
+                <div class="footer-about">
+                    <strong>关于本站</strong>
+                    <p>河南导航是一个非官方的公益整理项目，汇总河南省内高校官网与各级政府采购网站入口，方便师生、招投标从业者快速查找。所有链接均指向官方网站，本站不存储、不代理任何交易信息。</p>
+                </div>
+                <div class="footer-meta">
+                    <span id="footerUpdated">数据最后核对：请见 GitHub 提交记录</span>
+                    <span>·</span>
+                    <a href="https://github.com/LeoLiu-s/University-Navigation" target="_blank" rel="noopener noreferrer">GitHub 仓库</a>
+                    <span>·</span>
+                    <a href="https://github.com/LeoLiu-s/University-Navigation/issues" target="_blank" rel="noopener noreferrer">反馈 / 报错</a>
+                </div>
+            </div>
+        </footer>
     </main>
 
     <script src="js/config.js"></script>

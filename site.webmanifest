@@ -1,0 +1,11 @@
+{
+  "name": "河南导航 - 高校 & 政府采购",
+  "short_name": "河南导航",
+  "description": "河南高校官网导航、政府采购网导航",
+  "start_url": "/University-Navigation/",
+  "display": "standalone",
+  "background_color": "#0f172a",
+  "theme_color": "#0f172a",
+  "lang": "zh-CN",
+  "icons": []
+}
