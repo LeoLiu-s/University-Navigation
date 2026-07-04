@@ -21,7 +21,7 @@ $uniB64 = [Convert]::ToBase64String([System.Text.Encoding]::UTF8.GetBytes($uniIt
 $govB64 = [Convert]::ToBase64String([System.Text.Encoding]::UTF8.GetBytes($govItems))
 
 $output = @"
-function _d(s){return JSON.parse(decodeURIComponent(escape(atob(s))));}
+function _d(s){var b=atob(s),a=new Uint8Array(b.length);for(var i=0;i<b.length;i++)a[i]=b.charCodeAt(i);return JSON.parse(new TextDecoder("utf-8").decode(a));}
 var universityData={items:_d('$uniB64'),sidebar:universitySidebar,filters:universityFilters};
 var govData={items:_d('$govB64'),sidebar:govSidebar,filters:govFilters};
 "@
