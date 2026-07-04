@@ -26,7 +26,7 @@ var universityData={items:_d('$uniB64'),sidebar:universitySidebar,filters:univer
 var govData={items:_d('$govB64'),sidebar:govSidebar,filters:govFilters};
 "@
 
-Set-Content "$PSScriptRoot\js\data.built.js" -Value $output -Encoding UTF8 -NoNewline
+[System.IO.File]::WriteAllText("$PSScriptRoot\js\data.built.js", $output, [System.Text.UTF8Encoding]::new($false))
 
 $uniCount = ([regex]::Matches($uniItems, '\{ id:')).Count
 $govCount = ([regex]::Matches($govItems, '\{ id:')).Count
