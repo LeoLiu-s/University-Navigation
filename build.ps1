@@ -17,6 +17,11 @@ $govSection = $src.Substring($src.IndexOf('const govData'))
 $govIdx = $govSection.IndexOf('items: [')
 $govItems = Extract-Brackets $govSection ($govIdx + 7)
 
+function To-Json($s) { return $s -replace '(?<=[\{,]\s*)([a-zA-Z_$][a-zA-Z0-9_$]*)(?=\s*:)', '"$1"' }
+
+$uniItems = To-Json $uniItems
+$govItems = To-Json $govItems
+
 $uniB64 = [Convert]::ToBase64String([System.Text.Encoding]::UTF8.GetBytes($uniItems))
 $govB64 = [Convert]::ToBase64String([System.Text.Encoding]::UTF8.GetBytes($govItems))
 
@@ -28,6 +33,6 @@ var govData={items:_d('$govB64'),sidebar:govSidebar,filters:govFilters};
 
 [System.IO.File]::WriteAllText("$PSScriptRoot\js\data.built.js", $output, [System.Text.UTF8Encoding]::new($false))
 
-$uniCount = ([regex]::Matches($uniItems, '\{ id:')).Count
-$govCount = ([regex]::Matches($govItems, '\{ id:')).Count
+$uniCount = ([regex]::Matches($uniItems, '"id":')).Count
+$govCount = ([regex]::Matches($govItems, '"id":')).Count
 Write-Host "Build done. uni: $uniCount, gov: $govCount"
