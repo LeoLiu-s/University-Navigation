@@ -4,6 +4,23 @@ function escapeHtml(str) {
     return div.innerHTML;
 }
 
+const faviconCache = {};
+function getFaviconHtml(domain, name) {
+    if (faviconCache[domain] === false) {
+        return `<div class="card-logo" style="display:flex">${escapeHtml(name.charAt(0))}</div>`;
+    }
+    const encoded = encodeURIComponent(domain);
+    return `<img class="card-favicon" src="https://favicon.hlycc.com/${encoded}.png" alt="${escapeHtml(name)}" loading="lazy" decoding="async" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';faviconCache['${escapeHtml(domain)}']=false" /><div class="card-logo" style="display:none">${escapeHtml(name.charAt(0))}</div>`;
+}
+
+function highlightText(text, keyword) {
+    if (!keyword) return escapeHtml(text);
+    const kw = keyword.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+    const escaped = escapeHtml(text);
+    const re = new RegExp('(' + kw.replace(/\\\$/g, '$').replace(/\\\\/g, '\\') + ')', 'gi');
+    return escaped.replace(new RegExp(kw.replace(/\\\$/g, '$').replace(/\\\\/g, '\\'), 'gi'), '<mark style="background:rgba(99,102,241,0.3);color:inherit;border-radius:2px;padding:0 2px">$1</mark>');
+}
+
 function getCategory(name) {
     if (name.includes('师范')) return '师范';
     if (name.includes('医学') || name.includes('医药') || name.includes('卫生') || name.includes('护理')) return '医药';

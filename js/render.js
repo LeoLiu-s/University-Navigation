@@ -107,22 +107,23 @@ function renderCards() {
         const visits = visitStats[key] || 0;
         const isFavorited = favorites.has(key);
         const domain = item.url.replace(/^https?:\/\//, '').replace(/\/.*$/, '');
-        const faviconUrl = 'https://favicon.hlycc.com/' + domain + '.png';
         const schoolType = currentModule === 'university' ? getSchoolType(item.name) : '';
         const typeClassSchool = schoolType === '民办' ? 'private' : (schoolType === '中外合作' ? 'coop' : 'public');
+        const displayName = highlightText(item.name, searchFilter);
+        const displayUrl = highlightText(item.url, searchFilter);
+        const faviconHtml = getFaviconHtml(domain, item.name);
         return `
-            <div class="card ${typeClass} ${currentModule === 'gov' ? 'gov' : ''}" data-id="${item.id}" data-url="${escapeHtml(item.url)}">
+            <div class="card ${typeClass} ${currentModule === 'gov' ? 'gov' : ''}" data-id="${item.id}" data-url="${escapeHtml(item.url)}" tabindex="0" role="link" aria-label="${escapeHtml(item.name)}">
                 <div class="card-header">
                     <span class="card-num">${num}</span>
-                    <img class="card-favicon" src="${faviconUrl}" alt="${escapeHtml(item.name)}" loading="lazy" decoding="async" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
-                    <div class="card-logo" style="display:none">${logoChar}</div>
+                    ${faviconHtml}
                     <div class="card-info">
-                        <div class="card-title">${escapeHtml(item.name)}</div>
+                        <div class="card-title">${displayName}</div>
                         <span class="card-tag ${typeClass}">${escapeHtml(item.type)}</span>
                         ${currentModule === 'university' ? `<span class="card-school-type ${typeClassSchool}">${escapeHtml(schoolType)}</span>` : ''}
                     </div>
                 </div>
-                <div class="card-url">${escapeHtml(item.url)}</div>
+                <div class="card-url">${displayUrl}</div>
                 <div class="card-footer">
                     <span class="card-meta">\uD83D\uDCCD ${escapeHtml(item.location)} \u00B7 \uD83D\uDC41 ${visits}次</span>
                     <div class="card-actions">
