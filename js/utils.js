@@ -51,6 +51,11 @@ function visitUrl(id, url, event) {
         } catch(e) {}
 
         window.open(url, '_blank', 'noopener');
+
+        fetch('https://api.countapi.xyz/hit/henan-nav/total').catch(() => {});
+        const todayKey = 'today' + new Date().toISOString().slice(0,10);
+        fetch(`https://api.countapi.xyz/hit/henan-nav/${todayKey}`).catch(() => {});
+
         renderCards();
         updateVisitStats();
     }
@@ -151,4 +156,14 @@ function updateVisitStats() {
         }
     } catch(e) {}
     document.getElementById('todayVisits').textContent = todayVisits;
+
+    fetch('https://api.countapi.xyz/get/henan-nav/total')
+        .then(r => r.json()).then(d => {
+            if (d.value !== undefined) document.getElementById('totalVisits').textContent = d.value;
+        }).catch(() => {});
+    const todayKey = 'today' + new Date().toISOString().slice(0,10);
+    fetch(`https://api.countapi.xyz/get/henan-nav/${todayKey}`)
+        .then(r => r.json()).then(d => {
+            if (d.value !== undefined) document.getElementById('todayVisits').textContent = d.value;
+        }).catch(() => {});
 }
