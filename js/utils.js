@@ -17,8 +17,8 @@ function highlightText(text, keyword) {
     if (!keyword) return escapeHtml(text);
     const kw = keyword.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
     const escaped = escapeHtml(text);
-    const re = new RegExp('(' + kw.replace(/\\\$/g, '$').replace(/\\\\/g, '\\') + ')', 'gi');
-    return escaped.replace(new RegExp(kw.replace(/\\\$/g, '$').replace(/\\\\/g, '\\'), 'gi'), '<mark style="background:rgba(99,102,241,0.3);color:inherit;border-radius:2px;padding:0 2px">$1</mark>');
+    const regex = new RegExp('(' + kw + ')', 'gi');
+    return escaped.replace(regex, '<mark style="background:rgba(99,102,241,0.3);color:inherit;border-radius:2px;padding:0 2px">$1</mark>');
 }
 
 function getCategory(name) {
