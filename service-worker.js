@@ -30,7 +30,7 @@ self.addEventListener('activate', event => {
 
 self.addEventListener('fetch', event => {
     const url = new URL(event.request.url);
-    if (url.hostname === 'www.google.com' && url.pathname.startsWith('/s2/favicons') || url.hostname === 'api.countapi.xyz' || url.hostname === 'fonts.googleapis.com' || url.hostname === 'fonts.gstatic.com') {
+    if (url.hostname === 'api.countapi.xyz' || url.hostname === 'fonts.googleapis.com' || url.hostname === 'fonts.gstatic.com') {
         return;
     }
     event.respondWith(
