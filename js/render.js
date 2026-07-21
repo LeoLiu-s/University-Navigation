@@ -135,6 +135,7 @@ function renderCards() {
         `;
     }).join('');
     observeCards();
+    initFavicons();
 }
 
 function clearAllFilters() {
