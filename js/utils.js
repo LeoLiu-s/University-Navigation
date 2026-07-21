@@ -5,12 +5,8 @@ function escapeHtml(str) {
 }
 
 function getFaviconHtml(domain, name) {
-    const char = escapeHtml(name.charAt(0));
-    const domainEnc = encodeURIComponent(domain);
-    return `<div class="card-logo" style="display:flex">${char}</div><img class="card-favicon" src="https://www.google.com/s2/favicons?domain=${domainEnc}&sz=64" alt="${escapeHtml(name)}" style="display:none" onload="this.style.display='';this.previousElementSibling.style.display='none'" onerror="this.style.display='none'" />`;
+    return `<div class="card-logo">${escapeHtml(name.charAt(0))}</div>`;
 }
-
-function initFavicons() {}
 
 
 function highlightText(text, keyword) {
