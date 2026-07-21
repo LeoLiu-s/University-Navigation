@@ -4,12 +4,10 @@ function escapeHtml(str) {
     return div.innerHTML;
 }
 
-const faviconCache = {};
 function getFaviconHtml(domain, name) {
-    if (faviconCache[domain] === false) {
-        return `<div class="card-logo" style="display:flex">${escapeHtml(name.charAt(0))}</div>`;
-    }
-    return `<img class="card-favicon" src="https://${encodeURIComponent(domain)}/favicon.ico" alt="${escapeHtml(name)}" loading="lazy" decoding="async" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';faviconCache['${escapeHtml(domain)}']=false" /><div class="card-logo" style="display:none">${escapeHtml(name.charAt(0))}</div>`;
+    const char = escapeHtml(name.charAt(0));
+    const domainEnc = encodeURIComponent(domain);
+    return `<img class="card-favicon" src="https://${domainEnc}/favicon.ico" alt="${escapeHtml(name)}" loading="lazy" decoding="async" onerror="this.src='https://${domainEnc}/favicon.png';this.onerror=function(){this.style.display='none';this.nextElementSibling.style.display='flex'}" /><div class="card-logo" style="display:none">${char}</div>`;
 }
 
 function highlightText(text, keyword) {
