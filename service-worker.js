@@ -1,4 +1,4 @@
-const CACHE_NAME = 'henan-nav-v1';
+const CACHE_NAME = 'henan-nav-v2';
 const PRECACHE_URLS = [
     '/',
     'index.html',
@@ -9,7 +9,6 @@ const PRECACHE_URLS = [
     'js/render.js',
     'js/handlers.js',
     'js/data.js',
-    'js/data.built.js',
     '404.html',
     'site.webmanifest'
 ];
