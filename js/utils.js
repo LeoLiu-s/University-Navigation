@@ -7,7 +7,8 @@ function escapeHtml(str) {
 function getFaviconHtml(domain, name) {
     const char = escapeHtml(name.charAt(0));
     const domainEnc = encodeURIComponent(domain);
-    return `<img class="card-favicon" src="https://${domainEnc}/favicon.ico" alt="${escapeHtml(name)}" loading="lazy" decoding="async" onerror="this.src='https://${domainEnc}/favicon.png';this.onerror=function(){this.style.display='none';this.nextElementSibling.style.display='flex'}" /><div class="card-logo" style="display:none">${char}</div>`;
+    const googleSrc = `https://www.google.com/s2/favicons?domain=${domainEnc}&sz=64`;
+    return `<img class="card-favicon" src="https://${domainEnc}/favicon.ico" alt="${escapeHtml(name)}" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='${googleSrc}';this.onerror=function(){this.style.display='none';this.nextElementSibling.style.display='flex'}" /><div class="card-logo" style="display:none">${char}</div>`;
 }
 
 function highlightText(text, keyword) {
