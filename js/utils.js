@@ -4,10 +4,6 @@ function escapeHtml(str) {
     return div.innerHTML;
 }
 
-function getFaviconHtml(domain, name) {
-    return `<div class="card-logo">${escapeHtml(name.charAt(0))}</div>`;
-}
-
 
 function highlightText(text, keyword) {
     if (!keyword) return escapeHtml(text);
@@ -36,7 +32,6 @@ function getSchoolType(name) {
     const items = currentModule === 'university' ? universityData.items : [];
     const item = items.find(i => i.name === name);
     if (item && item.schoolType) return item.schoolType;
-    if (privateSchools.includes(name)) return '民办';
     return '公办';
 }
 

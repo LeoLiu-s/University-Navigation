@@ -97,7 +97,6 @@ function renderCards() {
     }
 
     grid.innerHTML = filtered.map((item, index) => {
-        const logoChar = escapeHtml(item.name.charAt(0));
         const num = index + 1;
 
         const typeClass = currentModule === 'university'
@@ -106,17 +105,15 @@ function renderCards() {
         const key = currentModule + '_' + item.id;
         const visits = visitStats[key] || 0;
         const isFavorited = favorites.has(key);
-        const domain = item.url.replace(/^https?:\/\//, '').replace(/\/.*$/, '');
         const schoolType = currentModule === 'university' ? getSchoolType(item.name) : '';
         const typeClassSchool = schoolType === '民办' ? 'private' : (schoolType === '中外合作' ? 'coop' : 'public');
         const displayName = highlightText(item.name, searchFilter);
         const displayUrl = highlightText(item.url, searchFilter);
-        const faviconHtml = getFaviconHtml(domain, item.name);
         return `
             <div class="card ${typeClass} ${currentModule === 'gov' ? 'gov' : ''}" data-id="${item.id}" data-url="${escapeHtml(item.url)}" tabindex="0" role="link" aria-label="${escapeHtml(item.name)}">
                 <div class="card-header">
                     <span class="card-num">${num}</span>
-                    ${faviconHtml}
+                    <div class="card-logo">${escapeHtml(item.name.charAt(0))}</div>
                     <div class="card-info">
                         <div class="card-title">${displayName}</div>
                         <span class="card-tag ${typeClass}">${escapeHtml(item.type)}</span>
