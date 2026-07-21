@@ -12,18 +12,29 @@ function getFaviconHtml(domain, name) {
 
 function loadFavicon(img) {
     let tried = 0;
+    let timer = null;
     function load() {
         const src = tried === 0 ? img.dataset.ico : img.dataset.google;
         if (!src || tried > 1) return;
+        clearTimeout(timer);
         img.onload = function() {
+            clearTimeout(timer);
             img.style.display = '';
             const logo = img.previousElementSibling;
             if (logo) logo.style.display = 'none';
         };
         img.onerror = function() {
+            clearTimeout(timer);
             tried++;
             load();
         };
+        if (tried === 0) {
+            timer = setTimeout(() => {
+                img.src = '';
+                tried++;
+                load();
+            }, 2500);
+        }
         img.src = src;
     }
     load();
