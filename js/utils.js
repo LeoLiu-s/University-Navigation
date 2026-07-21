@@ -7,49 +7,10 @@ function escapeHtml(str) {
 function getFaviconHtml(domain, name) {
     const char = escapeHtml(name.charAt(0));
     const domainEnc = encodeURIComponent(domain);
-    return `<div class="card-logo" style="display:flex">${char}</div><img class="card-favicon" src="" alt="${escapeHtml(name)}" style="display:none" data-ico="https://${domainEnc}/favicon.ico" data-google="https://www.google.com/s2/favicons?domain=${domainEnc}&sz=64" />`;
+    return `<div class="card-logo" style="display:flex">${char}</div><img class="card-favicon" src="https://www.google.com/s2/favicons?domain=${domainEnc}&sz=64" alt="${escapeHtml(name)}" style="display:none" onload="this.style.display='';this.previousElementSibling.style.display='none'" onerror="this.style.display='none'" />`;
 }
 
-function loadFavicon(img) {
-    let tried = 0;
-    let timer = null;
-    function load() {
-        const src = tried === 0 ? img.dataset.ico : img.dataset.google;
-        if (!src || tried > 1) return;
-        clearTimeout(timer);
-        img.onload = function() {
-            clearTimeout(timer);
-            img.style.display = '';
-            const logo = img.previousElementSibling;
-            if (logo) logo.style.display = 'none';
-        };
-        img.onerror = function() {
-            clearTimeout(timer);
-            tried++;
-            load();
-        };
-        if (tried === 0) {
-            timer = setTimeout(() => {
-                img.src = '';
-                tried++;
-                load();
-            }, 2500);
-        }
-        img.src = src;
-    }
-    load();
-}
-
-function initFavicons() {
-    const imgs = document.querySelectorAll('.card-favicon');
-    let i = 0;
-    function next() {
-        const end = Math.min(i + 8, imgs.length);
-        for (; i < end; i++) loadFavicon(imgs[i]);
-        if (i < imgs.length) setTimeout(next, 80);
-    }
-    setTimeout(next, 200);
-}
+function initFavicons() {}
 
 
 function highlightText(text, keyword) {
