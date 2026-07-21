@@ -9,8 +9,7 @@ function getFaviconHtml(domain, name) {
     if (faviconCache[domain] === false) {
         return `<div class="card-logo" style="display:flex">${escapeHtml(name.charAt(0))}</div>`;
     }
-    const encoded = encodeURIComponent(domain);
-    return `<img class="card-favicon" src="https://favicon.hlycc.com/${encoded}.png" alt="${escapeHtml(name)}" loading="lazy" decoding="async" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';faviconCache['${escapeHtml(domain)}']=false" /><div class="card-logo" style="display:none">${escapeHtml(name.charAt(0))}</div>`;
+    return `<img class="card-favicon" src="https://www.google.com/s2/favicons?domain=${encodeURIComponent(domain)}&sz=64" alt="${escapeHtml(name)}" loading="lazy" decoding="async" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';faviconCache['${escapeHtml(domain)}']=false" /><div class="card-logo" style="display:none">${escapeHtml(name.charAt(0))}</div>`;
 }
 
 function highlightText(text, keyword) {
